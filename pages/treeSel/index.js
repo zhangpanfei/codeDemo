@@ -6,7 +6,8 @@ const { TreeNode } = TreeSelect;
 
 const Demo = () => {
     const [value, setValue] = useState(undefined);
-    const onChange = () => {
+    const onChange = (val) => {
+        console.log(val)
         setValue(value);
     };
     return (
@@ -19,14 +20,25 @@ const Demo = () => {
             allowClear
             treeDefaultExpandAll
             onChange={onChange}
+            filterTreeNode={(input, node)=>{
+                console.log(input,node)
+                // return false;
+                return node.props.realTitle.includes(input)
+            }}
+
+            /* dropdownRender={(node)=>{
+console.log(node)
+                return 123
+            }} */
+            // fieldNames={{label: 'title'}}
         >
-            <TreeNode value="parent 1" title="parent 1">
-                <TreeNode value="parent 1-0" title="parent 1-0">
-                    <TreeNode value="leaf1" title="leaf1" />
-                    <TreeNode value="leaf2" title="leaf2" />
+            <TreeNode value="valparent 1" realTitle={'parent 1'} title={<div>parent 1</div>}>
+                <TreeNode value="valparent 1-0" realTitle={'parent 1-0'} title={<div>parent 1-0</div>}>
+                    <TreeNode value="valleaf1" realTitle={'leaf1'} title={<div>leaf1</div>} />
+                    <TreeNode value="valleaf2" realTitle={'leaf2'} title={<div>leaf2</div>} />
                 </TreeNode>
-                <TreeNode value="parent 1-1" title="parent 1-1">
-                    <TreeNode treeIcon={true} value="leaf3" title={<b style={{ color: '#08c' }}><SettingOutlined />leaf3ICON</b>} />
+                <TreeNode value="valparent 1-1" realTitle={'parent 1-1'} title={<div>parent 1-1</div>}>
+                    <TreeNode treeIcon={true} value="valleaf3" realTitle={'leaf3ICON'} title={<b style={{ color: '#08c' }}><SettingOutlined />leaf3ICON</b>} />
                 </TreeNode>
             </TreeNode>
         </TreeSelect>
