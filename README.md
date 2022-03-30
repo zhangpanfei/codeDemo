@@ -35,3 +35,10 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 
 [https://zpfv.vercel.app/](https://zpfv.vercel.app/)
+
+
+
+ssh-keyscan -t ecdsa github.com
+ssh-keygen -t ecdsa -b 256 -m PEM
+
+id_ecdsa.pub
