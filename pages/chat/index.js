@@ -124,7 +124,7 @@ export default class index extends Component {
                     domWrapper.scrollTo(0, currentScroll + (scrollHeight - currentScroll - clientHeight) / 2);
                }
             })();
-        }) 
+        }, 300) 
     }
 
     render() {
