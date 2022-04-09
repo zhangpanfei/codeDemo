@@ -17,7 +17,7 @@ const error = (msg) => {
 export default function handler(req, res) {
     const { command } = req.query
     if (!command) {
-        return res.send('illegal request!')
+        return res.json(error('Command is Error! Please enter a command containing the keyword "list" or "image" or "ping"'))
     }
 
     if (command.includes('ping')) {
