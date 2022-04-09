@@ -3,7 +3,6 @@ import { Input, Comment, Avatar, Tooltip, Button,message } from 'antd'
 import moment from 'moment'
 import axios from 'axios'
 import { v4 as uuidv4 } from 'uuid';
-import _ from 'loadsh'
 import styles from './index.module.less'
 
 export default class index extends Component {
@@ -34,14 +33,12 @@ export default class index extends Component {
     }
 
     componentDidUpdate() {
-        _.debounce(()=>{
-            const commentData = localStorage.getItem('commentData')
-            if (!commentData) {
-                localStorage.setItem('commentData', JSON.stringify(this.state.commentData))
-            } else if (JSON.parse(commentData)?.length !== this.state.commentData?.length) {
-                localStorage.setItem('commentData', JSON.stringify(this.state.commentData))
-            }
-        },300)
+        const commentData = localStorage.getItem('commentData')
+        if (!commentData) {
+            localStorage.setItem('commentData', JSON.stringify(this.state.commentData))
+        } else if (JSON.parse(commentData)?.length !== this.state.commentData?.length) {
+            localStorage.setItem('commentData', JSON.stringify(this.state.commentData))
+        }
     }
 
     createData = (comment) => {
