@@ -75,12 +75,11 @@ export default class index extends Component {
             createTime: Date.now()
         })
         
-        this.setState({commentData})
+        this.setState({commentData,inputText:''})
 
         try {
             const { data } = await axios.get(`/api/echo?command=${inputText}`)
             this.parseData(data)
-            this.setState({inputText:''})
         } catch(e) {
             console.error(e)
             message.error(`Error: ${e}`)
