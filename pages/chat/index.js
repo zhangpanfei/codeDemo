@@ -113,17 +113,19 @@ export default class index extends Component {
     }
 
     scrollToBottom = () => {
-        const domWrapper = document.querySelector(`.${styles.chatWindow}`); 
-        (function smoothscroll() {
-            const currentScroll = domWrapper.scrollTop;   
-            const clientHeight = domWrapper.offsetHeight; 
-            const scrollHeight = domWrapper.scrollHeight; 
-            if (scrollHeight - 10 > currentScroll + clientHeight) {
-                window.requestAnimationFrame(smoothscroll);
-                domWrapper.scrollTo(0, currentScroll + (scrollHeight - currentScroll - clientHeight) / 2);
-           }
-        })();
-       }
+        setTimeout(()=>{
+            const domWrapper = document.querySelector(`.${styles.chatWindow}`); 
+            (function smoothscroll() {
+                const currentScroll = domWrapper.scrollTop;   
+                const clientHeight = domWrapper.offsetHeight; 
+                const scrollHeight = domWrapper.scrollHeight; 
+                if (scrollHeight - 10 > currentScroll + clientHeight) {
+                    window.requestAnimationFrame(smoothscroll);
+                    domWrapper.scrollTo(0, currentScroll + (scrollHeight - currentScroll - clientHeight) / 2);
+               }
+            })();
+        }) 
+    }
 
     render() {
 
