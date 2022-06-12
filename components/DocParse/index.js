@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 import defaultStyles from "./index.module.less";
 
 export default function index({ data, classNames = {}, styles = {} }) {
@@ -7,12 +8,17 @@ export default function index({ data, classNames = {}, styles = {} }) {
       const { type } = item;
 
       const className = classNames[type] || defaultStyles[type];
-      const style = styles[type] || {};
+      let style = styles[type] || {};
+      if (item.styles) {
+        style = { ...style, ...item.styles };
+      }
+
+      const key = uuidv4();
 
       // 段落
       if (type === "paragraph") {
         return (
-          <p className={className} style={style}>
+          <p key={key} className={className} style={style}>
             {item?.content?.map((i) => {
               return handleFunc(i);
             })}
@@ -20,19 +26,40 @@ export default function index({ data, classNames = {}, styles = {} }) {
         );
       }
 
+      // 标题
+      if (type === "h1") {
+        return (
+          <h1 key={key} className={className} style={style}>
+            {item.text}
+          </h1>
+        );
+      }
+
       // 文本
       if (type === "text") {
         return (
-          <div className={className} style={style}>
+          <span key={key} className={className} style={style}>
             {item.text}
-          </div>
+          </span>
+        );
+      }
+
+      if (type === "image") {
+        return (
+          <img
+            key={key}
+            className={className}
+            style={style}
+            src={item.src}
+            alt={item.alt}
+          />
         );
       }
 
       // 表格
       if (type === "table") {
         return (
-          <table className={className} style={style}>
+          <table key={key} className={className} style={style}>
             <tbody>
               {item?.content?.map((i) => {
                 return handleFunc(i);
@@ -45,7 +72,7 @@ export default function index({ data, classNames = {}, styles = {} }) {
       // 行
       if (type === "row") {
         return (
-          <tr className={className} style={style}>
+          <tr key={key} className={className} style={style}>
             {item?.content?.map((i) => {
               return handleFunc(i);
             })}
@@ -56,7 +83,7 @@ export default function index({ data, classNames = {}, styles = {} }) {
       // 单元格
       if (type === "cell") {
         return (
-          <td className={className} style={style}>
+          <td key={key} className={className} style={style}>
             {item?.content?.map((i) => {
               return handleFunc(i);
             })}
@@ -69,7 +96,7 @@ export default function index({ data, classNames = {}, styles = {} }) {
 
     return (
       <>
-        {data.map((item) => {
+        {data?.map((item) => {
           return handleFunc(item);
         })}
       </>

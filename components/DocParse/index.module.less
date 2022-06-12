@@ -2,27 +2,36 @@
     .paragraph {
         display: block;
         margin: 15px 0;
-        background-color: #cde9ec;
     }
 
     .text {
-        font-weight: bold;
-        color: #006699;
+        font-weight: 500;
+        color: #0f0f0f;
+        font-size: 14px;
     }
 
     .table {
         width: 100%;
         max-width: 100%;
         margin: 10px 0;
-        
+
         tr {
             border-top: 1px solid #ddd;
             border-bottom: 1px solid #ddd;
         }
-        
+
     }
 
     .row {}
 
-    .cell {}
+    .cell {
+        padding: 0;
+        height: 50px;
+        span {
+            display: inline-block;
+            margin: 0;
+            min-width: 100px;
+        }
+
+    }
 }

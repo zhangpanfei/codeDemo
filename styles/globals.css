@@ -19,3 +19,21 @@ p {
   margin: 0;
   padding: 0;
 }
+
+.myTable {
+  background-color: #f5f5f5;
+}
+
+.myTable tr {
+  border:1px dashed #000;
+  padding: 0 5px;
+}
+
+.myText {
+  color: red;
+  font-weight: bold;
+}
+
+.myH1 {
+  color: purple;
+}
