@@ -62,7 +62,7 @@ const data = {
                 content: [
                   {
                     type: "text",
-                    text: "逝世日期",
+                    text: "所处时代",
                     styles: {
                         color: '#999',
                         fontWeight: 'blod',
@@ -75,7 +75,7 @@ const data = {
                 content: [
                   {
                     type: "text",
-                    text: "762年12月(宝应元年)",
+                    text: "唐朝",
                   },
                 ],
               },
