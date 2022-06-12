@@ -46,7 +46,7 @@ export default class index extends Component {
             <div className={styles.action}>数据中styles自动生效</div>
           </Col>
           <Col span={8}>
-            <DynamicReactJson src={data} displayDataTypes={false} />
+            <DynamicReactJson src={data} displayDataTypes={false} enableClipboard={false} />
           </Col>
           <Col span={16}>
             <DocParse
